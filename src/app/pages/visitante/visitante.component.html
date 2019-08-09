@@ -1,0 +1,51 @@
+<h1>Nuevo visitante</h1>
+<hr>
+<div class="row">
+    <label class="col text-right">
+        <button class="btn btn-danger" routerLink="/visitantes">
+            <i class="fa fa-arrow-left"></i>
+            Regresar
+        </button>
+    </label>
+</div>
+
+<div class="row animated fadeIn faster">
+    <div class="col">      
+        <form (ngSubmit)="guardarVisitante ( f )" #f="ngForm">
+            <div class="form-row">
+                <div class="form-group col">
+                    <label >Id</label>
+                    <input type="text" class="form-control" name="id" [(ngModel)]="visitante.id" placeholder="id" disabled="disabled">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label >Nombre del visitante</label>
+                    <input type="text" class="form-control" name="nombre" [(ngModel)]="visitante.nombre" placeholder="Nombre del visitante" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="">Apellidos</label>
+                    <input type="text" class="form-control" name="apellidos"  [(ngModel)]="visitante.apellidos" placeholder="Apellidos del visitante" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="">Foto</label>
+                    <input type="text" class="form-control" id="" name="foto"  [(ngModel)]="visitante.foto" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label for="">Motivo</label>
+                    <input type="text" class="form-control" id="" name="motivo"  [(ngModel)]="visitante.motivo" placeholder="Motivo de visita" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-save"></i>
+                Guardar
+            </button>
+        </form>
+    </div>
+</div>

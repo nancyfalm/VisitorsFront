@@ -1,0 +1,60 @@
+<h1>Lista de visitantes</h1>
+<hr>
+<div class="row">
+    <label class="col text-right">
+        <button class="btn btn-primary" routerLink="/visitante/nuevo">
+            <i class="fa fa-plus"></i>
+            Agregar
+        </button>
+    </label>
+</div>
+
+
+
+<table *ngIf="!carga && allVisitors.length > 0" class="table mt-3 animated fadeIn faster">
+    <thead class="thead-dark" >
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Foto</th>
+            <th scope="col">Motivo</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor=" let visitante of allVisitors; let i = index">
+            <th scope="row">{{i + visitante.id}}</th>
+            <th>{{visitante.nombre}}</th>
+            <td>{{visitante.apellidos}}</td>
+            <td>{{visitante.foto}}<img src="assets/not-available-es.png " width="100" height="100"> </td>
+            <td>{{visitante.motivo}}</td>
+            <td>
+                <button class="btn btn-info mr-1" [routerLink]="[ '/visitante', visitante.id ]">
+                    <i class="fa fa-pencil"></i>
+                </button>
+                <button class="btn btn-danger" (click)="eliminarVisitante(visitante , i)">
+                    <i class="fa fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div *ngIf="!carga && allVisitors.length === 0" class="alert alert-warning text-center mt-3">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+
+<div *ngIf="carga" class="alert alert-info text-center mt-3">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>  
+</div>
